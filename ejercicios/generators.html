@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generators</title>
+</head>
+<body>
+    <a href="./">Go back</a>
+    <p>Abre la consola</p>
+    <script>
+        function* simpleGen(){
+            console.log("GENERATOR START")
+            yield 1
+            console.log("GENERATOR END")
+        }
+        function* idMake() {
+            let id = 1
+            while(true){
+                yield id
+                id += 1
+            }
+        }
+        function* idMakeWithReset() {
+            let id = 1, reset
+            while(true){
+                reset = yield id
+                if(reset){
+                    id = 1
+                } else {
+                    id += 1
+                }
+            }
+        }
+        function* fibonacci(){
+            let a = 1, b = 1
+            while(true){
+                const nextNumber = a + b
+                a = b
+                b = nextNumber
+                yield nextNumber
+            }
+        }
+    </script>
+</body>
+</html>
